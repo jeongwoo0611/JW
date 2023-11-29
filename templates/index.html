@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>실시간 데이터 분석</title>
+</head>
+<body>
+    <h1>실시간 데이터 분석</h1>
+
+    <form method="POST">
+        <label for="id">ID:</label><br>
+        <input type="text" id="id" name="id"><br>
+        <label for="choice1">항목 1:</label><br>
+        <input type="text" id="choice1" name="choice1"><br>
+        <label for="choice2">항목 2:</label><br>
+        <input type="text" id="choice2" name="choice2"><br>
+        <label for="choice3">항목 3:</label><br>
+        <input type="text" id="choice3" name="choice3"><br>
+        <label for="choice4">항목 4:</label><br>
+        <input type="text" id="choice4" name="choice4"><br>
+        <label for="choice5">항목 5:</label><br>
+        <input type="text" id="choice5" name="choice5"><br>
+        <input type="submit" value="제출">
+    </form>
+
+    {% if analysis %}
+        <h2>분석 결과</h2>
+        {{ analysis | safe }}
+    {% endif %}
+</body>
+</html>
