@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            border: 3px solid green;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Bayesian Inference 예시</h2>
+
+<div class="center">
+  <div>
+    <p>민초</p>
+    <button onclick="updateProbabilities('민초', true)">Y</button>
+    <button onclick="updateProbabilities('민초', false)">N</button>
+  </div>
+  <div>
+    <p>하와이안 피자</p>
+    <button onclick="updateProbabilities('하와이안 피자', true)">Y</button>
+    <button onclick="updateProbabilities('하와이안 피자', false)">N</button>
+  </div>
+  <div>
+    <p>가지 볶음</p>
+    <button onclick="updateProbabilities('가지 볶음', true)">Y</button>
+    <button onclick="updateProbabilities('가지 볶음', false)">N</button>
+  </div>
+</div>
+
+<div id="probabilities"></div>
+
+<script>
+var counts = {
+  '민초': {yes: 0, no: 0},
+  '하와이안 피자': {yes: 0, no: 0},
+  '가지 볶음': {yes: 0, no: 0}
+};
+
+var probabilities = {
+  '3Y': 0.35,
+  '2Y': 0.35,
+  '1Y': 0.15,
+  '0Y': 0.15
+};
+
+function updateProbabilities(item, success) {
+  counts[item][success ? 'yes' : 'no'] += 1;
+
+  var yesCount = Object.values(counts).reduce((acc, val) => acc + val.yes, 0);
+  var noCount = Object.values(counts).reduce((acc, val) => acc + val.no, 0);
+  var totalCount = yesCount + noCount;
+
+  probabilities['3Y'] = yesCount / totalCount;
+  probabilities['2Y'] = (totalCount - yesCount) / totalCount;
+  probabilities['1Y'] = yesCount / totalCount;
+  probabilities['0Y'] = (totalCount - yesCount) / totalCount;
+
+  document.getElementById('probabilities').innerHTML = JSON.stringify(probabilities, null, 2);
+}
+
+updateProbabilities();
+</script>
+
+</body>
+</html>
