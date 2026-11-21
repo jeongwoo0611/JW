@@ -4,7 +4,7 @@
 
 ## 바로 실행하기
 
-1. `final_predict.ipynb`를 Colab(또는 Jupyter)에서 엽니다. Colab에서 바로 열기: https://colab.research.google.com/github/jeongwoo0611/JW/blob/main/final_predict.ipynb
+1. `final_predict.ipynb`를 Colab(또는 Jupyter)에서 엽니다. 
 2. 첫 코드 셀의 `TEST_DIR`를 사진 폴더 경로로 바꿉니다. 예: `TEST_DIR = '/content/test_photos'`
 3. 모든 셀을 실행합니다. Colab에서는 **런타임 → 모두 실행**입니다.
 
